@@ -41,24 +41,6 @@ app.post("/api/generate", async(req, res) => {
     }
 });
 
-
-// ----------------------
-// ✅ React Frontend Setup
-// ----------------------
-
-// Needed for ES modules
-const __filename = fileURLToPath(
-    import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Serve frontend build
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-// All other routes → React index.html
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
-});
-
 // ✅ Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, "0.0.0.0", () =>
